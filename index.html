@@ -47,7 +47,7 @@ textarea:focus, input:focus { outline: none; border-color: #1a73e8; }
 </head>
 <body>
 <div class="container">
-
+ 
 <div class="header">
   <div class="logo-row">
     <div class="logo-dot">CI</div>
@@ -58,7 +58,7 @@ textarea:focus, input:focus { outline: none; border-color: #1a73e8; }
   <div class="anon-banner">&#128274; Este canal es <strong>ANÓNIMO</strong>. No se solicita ni se registra tu nombre, DNI ni ningún dato que permita identificarte.</div>
   <div class="legal-box">La información facilitada se tratará con la debida confidencialidad y se utilizará exclusivamente para analizar y, en su caso, dar respuesta a los hechos comunicados, conforme a los protocolos internos de la empresa.</div>
 </div>
-
+ 
 <!-- PASO 1: elegir tipo -->
 <div id="step-tipo">
   <div class="section-label">¿Qué tipo de denuncia querés realizar?</div>
@@ -71,11 +71,11 @@ textarea:focus, input:focus { outline: none; border-color: #1a73e8; }
     <div class="type-desc">Incidencias relacionadas con el incumplimiento del Protocolo de Desconexión Digital de la empresa.</div>
   </div>
 </div>
-
+ 
 <!-- PASO 2a: formulario ACOSO -->
 <div id="form-acoso" class="hidden">
   <div class="section-label">Solicitud de intervención</div>
-
+ 
   <div class="card" id="f_rol">
     <div class="field-label">¿En calidad de qué realizás esta comunicación?</div>
     <div class="options">
@@ -84,28 +84,29 @@ textarea:focus, input:focus { outline: none; border-color: #1a73e8; }
       <label class="opt-label" onclick="pick('rol','Otros',this)"><input type="radio" name="rol">Otros</label>
     </div>
   </div>
-
+ 
   <div class="card" id="f_tipoacoso">
     <div class="field-label">Tipo de acoso o conflicto</div>
     <div class="options">
-      <label class="opt-label" onclick="pick('tipoAcoso','Psicosocial',this)"><input type="radio" name="tipoAcoso">Laboral</label>
+      <label class="opt-label" onclick="pick('tipoAcoso','Laboral',this)"><input type="radio" name="tipoAcoso">Laboral</label>
       <label class="opt-label" onclick="pick('tipoAcoso','Sexual',this)"><input type="radio" name="tipoAcoso">Sexual</label>
       <label class="opt-label" onclick="pick('tipoAcoso','Razón de sexo o discriminación LGBTI',this)"><input type="radio" name="tipoAcoso">Razón de sexo o discriminación LGBTI</label>
+      <label class="opt-label" onclick="pick('tipoAcoso','Discriminación',this)"><input type="radio" name="tipoAcoso">Discriminación</label>
       <label class="opt-label" onclick="pick('tipoAcoso','Conflicto interpersonal',this)"><input type="radio" name="tipoAcoso">Conflicto interpersonal</label>
       <label class="opt-label" onclick="pick('tipoAcoso','Otras discriminaciones',this)"><input type="radio" name="tipoAcoso">Otras discriminaciones</label>
     </div>
   </div>
-
+ 
   <div class="card" id="f_centro">
     <div class="field-label">Centro de trabajo / obra</div>
     <input type="text" id="in_centro" placeholder="Ej: Obra Embajada de Suecia">
   </div>
-
+ 
   <div class="card" id="f_fecha_acoso">
-    <div class="field-label">Fecha aproximada del hecho</div>
+    <div class="field-label">Fecha del hecho</div>
     <input type="date" id="in_fecha_acoso">
   </div>
-
+ 
   <div class="card" id="f_testigo">
     <div class="field-label">¿Hubo testigos?</div>
     <div class="options">
@@ -113,53 +114,53 @@ textarea:focus, input:focus { outline: none; border-color: #1a73e8; }
       <label class="opt-label" onclick="pick('testigo','No',this)"><input type="radio" name="testigo">No</label>
     </div>
   </div>
-
+ 
   <div class="card" id="f_ocupacion">
     <div class="field-label">Tipo de ocupación que desarrollás</div>
     <input type="text" id="in_ocupacion" placeholder="Ej: Oficial de obra, administrativo, jefe de obra...">
     <div class="hint">No indiques tu nombre, solo el puesto/rol, para preservar el anonimato.</div>
   </div>
-
+ 
   <div class="card" id="f_desc_acoso">
     <div class="field-label">Descripción de los hechos</div>
     <textarea id="in_desc_acoso" placeholder="Describe con el mayor detalle posible qué ocurrió, cuándo y quiénes estuvieron implicados..."></textarea>
   </div>
-
+ 
   <button class="btn-primary" onclick="enviarAcoso()">Enviar denuncia</button>
   <button class="btn-secondary" onclick="volver()">Volver</button>
   <p class="error-msg" id="err-acoso">&#9888; Completa el tipo de acoso y la descripción de los hechos antes de continuar.</p>
 </div>
-
+ 
 <!-- PASO 2b: formulario DESCONEXIÓN DIGITAL -->
 <div id="form-digital" class="hidden">
   <div class="section-label">Comunicación de incidencia — Desconexión digital</div>
-
+ 
   <div class="card" id="f_puesto">
     <div class="field-label">Puesto de trabajo</div>
     <input type="text" id="in_puesto" placeholder="Ej: Jefe de obra, administrativo...">
     <div class="hint">No indiques tu nombre, solo el puesto, para preservar el anonimato.</div>
   </div>
-
+ 
   <div class="card" id="f_fecha_digital">
     <div class="field-label">Fecha del hecho</div>
     <input type="date" id="in_fecha_digital">
   </div>
-
+ 
   <div class="card" id="f_desc_digital">
     <div class="field-label">Descripción de los hechos</div>
     <textarea id="in_desc_digital" placeholder="Describe de la forma más detallada posible los hechos contrarios al Protocolo de Desconexión Digital: fechas, horarios, personas implicadas y cualquier otra información relevante..."></textarea>
   </div>
-
+ 
   <div class="card" id="f_implicados">
     <div class="field-label">Personas implicadas (rol/cargo, no nombres)</div>
     <input type="text" id="in_implicados" placeholder="Ej: Responsable de obra">
   </div>
-
+ 
   <button class="btn-primary" onclick="enviarDigital()">Enviar denuncia</button>
   <button class="btn-secondary" onclick="volver()">Volver</button>
   <p class="error-msg" id="err-digital">&#9888; Completa la descripción de los hechos antes de continuar.</p>
 </div>
-
+ 
 <!-- CONFIRMACIÓN -->
 <div id="done" class="hidden">
   <div class="done-box">
@@ -168,14 +169,13 @@ textarea:focus, input:focus { outline: none; border-color: #1a73e8; }
     <div class="done-text">Tu comunicación se ha registrado de forma anónima. Será analizada conforme a los protocolos internos de la empresa.<br><br>Ya puedes cerrar esta ventana.</div>
   </div>
 </div>
-
+ 
 </div>
 <script>
-// ⚠️ Reemplaza esta URL por la del Web App de Apps Script del Google Sheet donde quieras recibir las denuncias.
-var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxa_OcgtiWqAFypqwCbiXSmYA8q_Tg3BQSmTmPSpW1PTvBeSZO5f6HpELaX2uhw8CrLDA/exec';
-
+var SHEET_URL = 'https://script.google.com/macros/s/AKfycbx-nczyi1bceghLH68Vk4BvVSIDQK3PewfdUdW0yYPwlREAtgA2XSH4oH68QNYs1Fvo7A/exec';
+ 
 var vals = {};
-
+ 
 function pick(campo, valor, el) {
   vals[campo] = valor;
   var parent = el.parentElement;
@@ -183,7 +183,7 @@ function pick(campo, valor, el) {
   for (var i = 0; i < siblings.length; i++) siblings[i].classList.remove('selected');
   el.classList.add('selected');
 }
-
+ 
 function elegirTipo(tipo) {
   document.getElementById('step-tipo').classList.add('hidden');
   if (tipo === 'acoso') {
@@ -193,27 +193,27 @@ function elegirTipo(tipo) {
   }
   window.scrollTo({ top:0, behavior:'smooth' });
 }
-
+ 
 function volver() {
   document.getElementById('form-acoso').classList.add('hidden');
   document.getElementById('form-digital').classList.add('hidden');
   document.getElementById('step-tipo').classList.remove('hidden');
   window.scrollTo({ top:0, behavior:'smooth' });
 }
-
+ 
 function enviarDatos(data) {
   var iframe = document.createElement('iframe');
   iframe.name = 'hidden_frame_' + Date.now();
   iframe.style.display = 'none';
   document.body.appendChild(iframe);
-
+ 
   var form = document.createElement('form');
   form.method = 'POST';
   form.action = SHEET_URL;
   form.target = iframe.name;
   form.style.display = 'none';
   form.enctype = 'application/x-www-form-urlencoded';
-
+ 
   Object.keys(data).forEach(function(key) {
     var input = document.createElement('input');
     input.type = 'hidden';
@@ -221,31 +221,31 @@ function enviarDatos(data) {
     input.value = data[key];
     form.appendChild(input);
   });
-
+ 
   document.body.appendChild(form);
   form.submit();
-
+ 
   setTimeout(function() {
     if (form.parentNode) document.body.removeChild(form);
     if (iframe.parentNode) document.body.removeChild(iframe);
   }, 5000);
 }
-
+ 
 function mostrarError(id) {
   document.getElementById(id).style.display = 'block';
 }
-
+ 
 function ocultarError(id) {
   document.getElementById(id).style.display = 'none';
 }
-
+ 
 function mostrarDone() {
   document.getElementById('form-acoso').classList.add('hidden');
   document.getElementById('form-digital').classList.add('hidden');
   document.getElementById('done').classList.remove('hidden');
   window.scrollTo({ top:0, behavior:'smooth' });
 }
-
+ 
 function enviarAcoso() {
   var desc = document.getElementById('in_desc_acoso').value.trim();
   if (!vals.tipoAcoso || !desc) {
@@ -267,7 +267,7 @@ function enviarAcoso() {
   enviarDatos(data);
   mostrarDone();
 }
-
+ 
 function enviarDigital() {
   var desc = document.getElementById('in_desc_digital').value.trim();
   if (!desc) {
@@ -287,5 +287,7 @@ function enviarDigital() {
   mostrarDone();
 }
 </script>
+</body>
+</html>
 </body>
 </html>
